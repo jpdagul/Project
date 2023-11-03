@@ -1,22 +1,29 @@
+/* Reset styles */
 html,
+body,
 .container {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* Container styles */
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2vh; /* Set font size relative to viewport height */
 }
 
+/* Calendar styles */
 .calendar {
-  border: 1px solid #ccc;
   text-align: center;
   width: 100vw; /* Set width relative to viewport width */
   height: 100vh; /* Set height relative to viewport height */
 }
 
-header {
+/* Calendar header styles */
+.calendar header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,6 +32,7 @@ header {
   padding: 2vh; /* Set padding relative to viewport height */
 }
 
+/* Month navigation buttons */
 #prevMonthBtn,
 #nextMonthBtn {
   background-color: #444;
@@ -39,32 +47,40 @@ header {
   background-color: #555;
 }
 
+/* Current month title */
 #currentMonth {
   font-size: 4vh;
 }
 
+/* Weekday styles */
 .weekdays {
   background-color: #5d5d5d;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 3px;
 }
 
-.weekdays > div {
+.weekdays > span {
+  /* Updated to span */
   color: white;
   flex: 1;
   text-align: center;
   padding: 1vh; /* Set padding relative to viewport height */
 }
 
+/* Days grid styles */
 .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
 }
 
+/* Day styles */
 .day {
   text-align: center;
   padding: 2vh; /* Set padding relative to viewport height */
   height: 100px;
+  border: 1px solid #ccc;
 }
 
 .day:not(.prev-month, .next-month) {
@@ -72,14 +88,17 @@ header {
 }
 
 .day:hover:not(.prev-month, .next-month) {
-  border: solid 1px black;
+  border: 1px solid black;
 }
 
+/* Today's date styles */
 .today {
   background-color: #303030;
+  box-shadow: 1px 1px 5px black;
   color: white;
 }
 
+/* Styles for previous and next month days */
 .prev-month,
 .next-month {
   opacity: 0.3;
