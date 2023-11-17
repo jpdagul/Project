@@ -3,7 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> </title>
+    <title>Website Title</title>
+    <link rel="stylesheet" href="css/frontpage.css" />
+    <link rel="icon" href="img/logo.png" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="title">
+        <img src="img/logo.png" alt="icon" /><a href="index.html"
+          >Website Title</a
+        >
+      </div>
+      <nav>
+        <div id="nav-list">
+          <a href="">About Us</a>
+          <a href="">Contact</a>
+        </div>
+        <div class="nav-button">
+          <button onclick="toggleNav()">≡</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="txt-container">
+          <h4>Incognito Mode</h4>
+          <h1>Website Title</h1>
+          <p>
+            As the sun rises on new opportunities, our calendar and to-do list
+            awaits to script your day's masterpiece.
+          </p>
+        </div>
+        <div class="btn-container">
+          <button><a href="calendar.html">Calendar</a></button>
+          <button><a href="">To Do List</a></button>
+        </div>
+      </div>
+
+      <div class="img-container">
+        <img src="img/calendar.png" alt="Calendar Image" />
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+    </footer>
+
+    <script src="js/frontpage.js"></script>
+  </body>
 </html>
