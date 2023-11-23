@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="css/calendar-style.css" />
   </head>
   <body>
+    <nav>
+      <div id="nav-list">
+        <a class="unique" href="#">To Do List</a>
+        <a href="index.html">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="nav-button">
+        <button onclick="toggleNav()">≡</button>
+      </div>
+    </nav>
+
     <div class="container">
       <div class="calendar">
         <header>
@@ -25,49 +37,23 @@
         </div>
         <div class="days">
           <!-- Previous Month -->
-          <span class="day prev-month">29</span>
-          <span class="day prev-month">30</span>
-          <span class="day prev-month">31</span>
+          <span class="day prev-month"></span>
 
           <!-- Current Month -->
-          <span class="day">1</span>
-          <span class="day">2</span>
-          <span class="day today">3</span>
-          <span class="day">4</span>
-          <span class="day">5</span>
-          <span class="day">6</span>
-          <span class="day">7</span>
-          <span class="day">8</span>
-          <span class="day">9</span>
-          <span class="day">10</span>
-          <span class="day">11</span>
-          <span class="day">12</span>
-          <span class="day">13</span>
-          <span class="day">14</span>
-          <span class="day">15</span>
-          <span class="day">16</span>
-          <span class="day">17</span>
-          <span class="day">18</span>
-          <span class="day">19</span>
-          <span class="day">20</span>
-          <span class="day">21</span>
-          <span class="day">22</span>
-          <span class="day">23</span>
-          <span class="day">24</span>
-          <span class="day">25</span>
-          <span class="day">26</span>
-          <span class="day">27</span>
-          <span class="day">28</span>
-          <span class="day">29</span>
-          <span class="day">30</span>
+          <span class="day"></span>
+          <span class="day today"></span>
 
           <!-- Next Month -->
-          <span class="day next-month">1</span>
-          <span class="day next-month">2</span>
+          <span class="day next-month"></span>
         </div>
       </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <footer>
+      <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+    </footer>
+
+    <script src="js/calendar.js"></script>
+    <script src="js/frontpage.js"></script>
   </body>
 </html>

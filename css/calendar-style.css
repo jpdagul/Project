@@ -1,25 +1,122 @@
-/* Reset styles */
+/* ---------------Reset--------------- */
 html,
 body,
 .container {
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
+
+body,
+.container {
+  overflow: auto;
+}
+
+/* ---------------Navigation--------------- */
+
+/* nav list */
+
+nav #nav-list {
+  position: absolute;
+  bottom: 42%;
+  left: 1%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+nav #nav-list.show {
+  transform: translateX(-10%);
+  opacity: 1;
+  visibility: visible;
+}
+
+nav #nav-list.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+nav #nav-list a {
+  background-color: #91476c;
+  font-size: large;
+  font-weight: bold;
+  color: #fff;
+  margin: 5px;
+  padding: 15px;
+  box-shadow: #45373e 0 0 5px;
+  outline: black 1px solid;
+  text-decoration: none;
+}
+
+nav #nav-list .unique {
+  background-color: #09719a;
+}
+
+nav #nav-list a:hover {
+  background-color: #64394f;
+}
+
+nav #nav-list .unique:hover {
+  background-color: #074c68;
+}
+
+/* nav button */
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  position: absolute;
+  z-index: 1000;
+  bottom: 70%;
+  left: -6%;
+  width: 9%;
+  height: 30px;
+  padding: 15px;
+  border-radius: 0 20px 20px 0;
+  background-color: #91476c;
+  box-shadow: #45373e 0 0 10px;
+  outline: black 1px solid;
+  transition: all 0.5s ease;
+}
+
+.nav-button:hover {
+  transform: translateX(35%);
+}
+
+nav button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+  transition: all 0.5s ease;
+}
+
+nav button:hover {
+  cursor: pointer;
+  transform: rotate(180deg) scale(1.5);
+}
+
+/* ---------------Main--------------- */
 
 /* Container styles */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2vh; /* Set font size relative to viewport height */
+  font-size: 2vh;
 }
 
 /* Calendar styles */
 .calendar {
   text-align: center;
-  width: 100vw; /* Set width relative to viewport width */
-  height: 100vh; /* Set height relative to viewport height */
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Calendar header styles */
@@ -27,24 +124,25 @@ body,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #303030;
+  background-color: #4f1a36;
   color: #fff;
-  padding: 2vh; /* Set padding relative to viewport height */
+  padding: 2vh;
 }
 
 /* Month navigation buttons */
 #prevMonthBtn,
 #nextMonthBtn {
-  background-color: #444;
+  background-color: #91476c;
   color: #fff;
   border: none;
-  padding: 1vh 2vh; /* Set padding relative to viewport height */
+  height: 40px;
+  width: 100px;
   cursor: pointer;
 }
 
 #prevMonthBtn:hover,
 #nextMonthBtn:hover {
-  background-color: #555;
+  background-color: #553344;
 }
 
 /* Current month title */
@@ -54,18 +152,17 @@ body,
 
 /* Weekday styles */
 .weekdays {
-  background-color: #5d5d5d;
+  background-color: #45373e;
   display: flex;
   justify-content: space-between;
   margin-bottom: 3px;
 }
 
 .weekdays > span {
-  /* Updated to span */
   color: white;
   flex: 1;
   text-align: center;
-  padding: 1vh; /* Set padding relative to viewport height */
+  padding: 1vh;
 }
 
 /* Days grid styles */
@@ -78,22 +175,18 @@ body,
 /* Day styles */
 .day {
   text-align: center;
-  padding: 2vh; /* Set padding relative to viewport height */
-  height: 100px;
-  border: 1px solid #ccc;
-}
-
-.day:not(.prev-month, .next-month) {
+  padding: 2vh;
+  height: 95px;
   border: 1px solid #ccc;
 }
 
 .day:hover:not(.prev-month, .next-month) {
-  border: 1px solid black;
+  border: 1px solid #45373e;
 }
 
 /* Today's date styles */
 .today {
-  background-color: #303030;
+  background-color: #553344;
   box-shadow: 1px 1px 5px black;
   color: white;
 }
@@ -102,4 +195,44 @@ body,
 .prev-month,
 .next-month {
   opacity: 0.3;
+}
+
+/* ---------------Footer--------------- */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 5%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #45373e;
+  border-top: #000000 1px solid;
+  color: #d2aabd;
+}
+
+footer p {
+  font-size: 12px;
+}
+
+/* ---------------Mobile Responsiveness--------------- */
+@media only screen and (max-width: 768px) {
+  nav #nav-list {
+    bottom: 39%;
+  }
+
+  #prevMonthBtn,
+  #nextMonthBtn {
+    scale: 0.7;
+  }
+
+  #currentMonth {
+    font-size: 3vh;
+  }
+
+  .day {
+    height: 90px;
+  }
 }
