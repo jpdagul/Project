@@ -143,9 +143,9 @@ header nav button:hover {
   transform: rotate(180deg) scale(1.5);
 }
 
-/* ---------------Main--------------- */
+/* ---------------Home--------------- */
 
-main .container {
+.home-container {
   height: 600px;
   width: 600px;
   padding: 50px;
@@ -205,7 +205,7 @@ main .container {
 
 /* Image */
 
-main .img-container {
+.img-container {
   height: 600px;
   width: 600px;
   padding: 50px;
@@ -221,6 +221,42 @@ main .img-container {
 
 .img-container img:hover {
   transform: scale(1.1);
+}
+
+/* ---------------About--------------- */
+
+.about-container {
+  height: 600px;
+  width: 1000px;
+  padding: 50px;
+  margin-top: 130px;
+  border-radius: 10px;
+  border: white 1px solid;
+  box-shadow: black 0 0 10px;
+  background-color: #0000005e;
+  transition: all 0.5s ease;
+}
+
+.about-container:hover {
+  transform: scale(1.03);
+}
+
+/* ---------------Contact--------------- */
+
+.contact-container {
+  height: 600px;
+  width: 1000px;
+  padding: 50px;
+  margin-top: 130px;
+  border-radius: 10px;
+  border: white 1px solid;
+  box-shadow: black 0 0 10px;
+  background-color: #0000005e;
+  transition: all 0.5s ease;
+}
+
+.contact-container:hover {
+  transform: scale(1.03);
 }
 
 /* ---------------Footer--------------- */
@@ -275,7 +311,7 @@ footer p {
     margin-bottom: 10px;
   }
 
-  main .container,
+  main .home-container,
   main .img-container {
     height: auto;
     width: 100%;
@@ -293,5 +329,13 @@ footer p {
 
   .img-container img {
     width: 100%;
+  }
+
+  .about-container {
+    scale: 0.9;
+  }
+
+  .contact-container {
+    scale: 0.9;
   }
 }

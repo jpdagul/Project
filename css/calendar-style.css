@@ -176,7 +176,7 @@ nav button:hover {
 .day {
   text-align: center;
   padding: 2vh;
-  height: 95px;
+  height: 96px;
   border: 1px solid #ccc;
 }
 
@@ -233,6 +233,6 @@ footer p {
   }
 
   .day {
-    height: 90px;
+    height: 89px;
   }
 }
