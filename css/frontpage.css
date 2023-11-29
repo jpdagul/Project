@@ -278,6 +278,9 @@ p {
 /* ---------------Contact--------------- */
 
 .contact-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 600px;
   width: 1000px;
   padding: 50px;
@@ -289,8 +292,71 @@ p {
   transition: all 0.5s ease;
 }
 
+/* Contact Form */
+
 .contact-container:hover {
   transform: scale(1.03);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 440px;
+  padding: 30px;
+  color: white;
+}
+
+.contact-container form {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-container label {
+  width: 100%;
+  text-align: left;
+}
+
+.contact-container input,
+.contact-container textarea {
+  width: 100%;
+  padding: 5px;
+  background-color: #ffffff30;
+  border: black 0.5px solid;
+}
+
+.contact-container button {
+  background-color: #91476c;
+  color: white;
+  border: transparent;
+  padding: 12px 30px;
+  margin: 5px;
+}
+
+.contact-container button:hover {
+  opacity: 0.5;
+}
+
+/* info */
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 440px;
+  padding: 30px;
+  color: white;
+}
+
+.info-container p {
+  margin: 5px;
+  text-align: left;
 }
 
 /* ---------------Footer--------------- */
@@ -371,9 +437,13 @@ footer p {
 
   .about-container {
     scale: 0.9;
+    overflow: scroll;
   }
 
   .contact-container {
+    flex-direction: column;
     scale: 0.9;
+    padding: 0;
+    overflow: scroll;
   }
 }
