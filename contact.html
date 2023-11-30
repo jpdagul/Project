@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chrono</title>
+    <link rel="stylesheet" href="css/frontpage.css" />
+    <link rel="icon" href="img/icon.png" />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <img src="img/icon.png" alt="icon" /><a href="index.html">Chrono</a>
+      </div>
+      <nav>
+        <div id="nav-list">
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-button">
+          <button onclick="toggleNav()">≡</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="contact-container">
+        <div class="form-container">
+          <h1>Contact Us</h1>
+
+          <form>
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+
+            <label for="message">Message:</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+              rows="10"
+              required
+            ></textarea>
+
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="info-container">
+          <p>
+            <strong>Email:</strong>
+            <br />
+            enquiry@humber.ca
+          </p>
+          <p>
+            <strong>Phone:</strong>
+            <br />
+            +1 (416) 675-3111
+          </p>
+          <p>
+            <strong>Address:</strong>
+            <br />
+            205 Humber College Blvd, Etobicoke, ON M9W 5L7
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+    </footer>
+
+    <script src="js/frontpage.js"></script>
+  </body>
+</html>

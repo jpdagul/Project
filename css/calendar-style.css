@@ -19,6 +19,7 @@ body,
 
 nav #nav-list {
   position: absolute;
+  z-index: 1000;
   bottom: 42%;
   left: 1%;
   display: flex;
@@ -176,7 +177,7 @@ nav button:hover {
 .day {
   text-align: center;
   padding: 2vh;
-  height: 95px;
+  height: 96px;
   border: 1px solid #ccc;
 }
 
@@ -223,6 +224,14 @@ footer p {
     bottom: 39%;
   }
 
+  .nav-button {
+    opacity: 30%;
+  }
+
+  .nav-button:hover {
+    opacity: 100%;
+  }
+
   #prevMonthBtn,
   #nextMonthBtn {
     scale: 0.7;
@@ -233,6 +242,6 @@ footer p {
   }
 
   .day {
-    height: 90px;
+    height: 89px;
   }
 }
