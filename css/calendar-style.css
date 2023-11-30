@@ -19,6 +19,7 @@ body,
 
 nav #nav-list {
   position: absolute;
+  z-index: 1000;
   bottom: 42%;
   left: 1%;
   display: flex;
@@ -221,6 +222,14 @@ footer p {
 @media only screen and (max-width: 768px) {
   nav #nav-list {
     bottom: 39%;
+  }
+
+  .nav-button {
+    opacity: 30%;
+  }
+
+  .nav-button:hover {
+    opacity: 100%;
   }
 
   #prevMonthBtn,
