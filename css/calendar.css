@@ -74,7 +74,7 @@ nav #nav-list .unique:hover {
   position: absolute;
   z-index: 1000;
   bottom: 70%;
-  left: -6%;
+  left: -7%;
   width: 9%;
   height: 30px;
   padding: 15px;
@@ -82,10 +82,12 @@ nav #nav-list .unique:hover {
   background-color: #91476c;
   box-shadow: #45373e 0 0 10px;
   outline: black 1px solid;
+  opacity: 50%;
   transition: all 0.5s ease;
 }
 
 .nav-button:hover {
+  opacity: 100%;
   transform: translateX(35%);
 }
 
@@ -178,7 +180,7 @@ nav button:hover {
   text-align: center;
   padding: 2vh;
   height: 96px;
-  border: 1px solid #ccc;
+  border: 1px solid #00000041;
 }
 
 .day:hover:not(.prev-month, .next-month) {
@@ -201,7 +203,7 @@ nav button:hover {
 /* ---------------Footer--------------- */
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   height: 5%;
   width: 100%;
@@ -221,15 +223,12 @@ footer p {
 /* ---------------Mobile Responsiveness--------------- */
 @media only screen and (max-width: 768px) {
   nav #nav-list {
-    bottom: 39%;
+    bottom: 45%;
+    left: 3%;
   }
 
   .nav-button {
-    opacity: 30%;
-  }
-
-  .nav-button:hover {
-    opacity: 100%;
+    top: 17%;
   }
 
   #prevMonthBtn,
