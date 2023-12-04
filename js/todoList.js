@@ -2,7 +2,7 @@ const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 
 function addTask() {
-  const taskText = taskInput.ariaValueMax.trim();
+  const taskText = taskInput.value.trim();
   if (taskText !== "") {
     const li = documnet.createElement("li");
     li.textContent = taskText;

@@ -4,14 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-DO List</title>
+    <link rel="stylesheet" href="css/todoList.css" />
   </head>
   <body>
+    <nav>
+      <div id="nav-list">
+        <a class="unique" href="#">To Do List</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-button">
+        <button onclick="toggleNav()">≡</button>
+      </div>
+    </nav>
     <div class="todo-container">
       <h1>To-DO List</h1>
       <input type="text" id="taskInput" placeholder="Add a new task" />
       <button onclick="addTask()">Add Task</button>
-      <ul id="taskList"></ul>
+      <ul id="taskList">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-    <script src="todoList.js"></script>
+    <script src="js/todoList.js"></script>
+    <script src="js/frontpage.js"></script>
   </body>
 </html>
