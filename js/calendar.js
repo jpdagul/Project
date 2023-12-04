@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let dayIndex = firstDay.getDay();
 
     // Calculate the total number of days to display (35)
-    const totalDays = 35;
+    const totalDays = 42;
 
     // Create and append day elements for the previous month
     for (let i = dayIndex - 1; i >= 0; i--) {
