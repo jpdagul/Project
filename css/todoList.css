@@ -40,7 +40,7 @@ input {
 button {
   padding: 10px 20px;
   cursor: pointer;
-  background-colour: #f1f1f1;
+  background-color: #f1f1f1;
   border: none;
   border-radius: 5px;
 }
@@ -145,4 +145,5 @@ nav button {
 nav button:hover {
   cursor: pointer;
   transform: rotate(180deg) scale(1.5);
+  background-color: transparent;
 }
