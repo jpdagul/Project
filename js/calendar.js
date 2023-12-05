@@ -20,6 +20,22 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCalendar();
   });
 
+  // Event listener for the current month element
+  currentMonthElement.addEventListener("click", function () {
+    const userInput = prompt("Enter a date (YYYY-MM-DD):");
+    if (userInput && userInput.length === 10) {
+      const selectedDate = new Date(userInput);
+      if (!isNaN(selectedDate.getTime())) {
+        currentDate = selectedDate;
+        updateCalendar();
+      } else {
+        alert("Invalid input. Please enter a valid date (YYYY-MM-DD).");
+      }
+    } else {
+      alert("Invalid input. Please enter a date in the format YYYY-MM-DD.");
+    }
+  });
+
   // Function to update the calendar based on the current date
   function updateCalendar() {
     // Update the displayed month
@@ -49,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Calculate the day index for the first day of the month
     let dayIndex = firstDay.getDay();
 
-    // Calculate the total number of days to display (35)
+    // Calculate the total number of days to display
     const totalDays = 42;
 
     // Create and append day elements for the previous month
