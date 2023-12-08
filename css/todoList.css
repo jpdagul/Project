@@ -78,11 +78,11 @@ input {
   margin-right: 5px;
   font-size: 16px;
 }
-/* button*/
+/*---buttons---*/
 button {
   padding: 10px 20px;
   cursor: pointer;
-  background-colour: #f8e0e7;
+  background-colour: #008080;
   border: none;
   border-radius: 5px;
   width: 125px;
@@ -113,11 +113,6 @@ li > button {
   height: 50px;
   font-size: 16px;
 }
-
-.completed li {
-  text-decoration: line-through;
-}
-
 /* Navigation */
 nav #nav-list {
   position: absolute;

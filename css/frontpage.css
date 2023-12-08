@@ -267,12 +267,34 @@ header nav button:hover {
   text-shadow: #00000060 0 0 5px;
 }
 
-p {
+.about-container p {
   color: white;
   text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-weight: lighter;
   line-height: 2;
+}
+
+.about-container .profiles {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.about-container .profiles img {
+  width: 100px;
+  margin-top: 50px;
+  border: white 1px solid;
+  border-radius: 5px;
+  padding: 2px;
+  box-shadow: #ffffff6d 0 0 10px;
+}
+
+.about-container .profiles figcaption {
+  color: #09719a;
+  margin-top: 10px;
 }
 
 /* ---------------Contact--------------- */

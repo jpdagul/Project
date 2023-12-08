@@ -33,4 +33,5 @@ function deleteTask(event) {
 function completeTask(event) {
   const listItem = event.target.parentElement;
   listItem.classList.toggle("completed");
+  taskText.style.textDecoration === "line-through" ? "none" : "line-through";
 }
