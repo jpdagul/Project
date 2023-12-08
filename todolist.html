@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="todolist.css" />
-    <title>To-DO List</title>
+    <title>To-Do List</title>
     <link rel="stylesheet" href="css/todoList.css" />
   </head>
   <body>
+    <header>
+      <h1>To do List</h1>
+    </header>
     <nav>
       <div id="nav-list">
         <a class="unique" href="calendar.html">Calendar</a>
@@ -19,13 +22,19 @@
         <button onclick="toggleNav()">≡</button>
       </div>
     </nav>
-    <div class="todo-container">
-      <h1>To-DO List</h1>
-      <input type="text" id="taskInput" placeholder="Add a new task" />
-      <button onclick="addTask()">Add Task</button>
-      <ul id="taskList"></ul>
-    </div>
+    <main>
+      <div class="centered-container">
+        <div class="todo-container">
+          <input type="text" id="taskInput" placeholder="Add a new task" />
+          <button onclick="addTask()">Add Task</button>
+          <ul id="taskList"></ul>
+        </div>
+      </div>
+    </main>
     <script src="js/todoList.js"></script>
     <script src="js/frontpage.js"></script>
+    <footer>
+      <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+    </footer>
   </body>
 </html>
