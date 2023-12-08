@@ -2,7 +2,7 @@
 html,
 body,
 .container {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -11,6 +11,12 @@ body,
 body,
 .container {
   overflow: auto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .todo-container {
@@ -197,4 +203,5 @@ nav button {
 nav button:hover {
   cursor: pointer;
   transform: rotate(180deg) scale(1.5);
+  background-color: transparent;
 }
