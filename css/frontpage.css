@@ -397,7 +397,7 @@ header nav button:hover {
 /* ---------------Footer--------------- */
 
 footer {
-  position: relative;
+  position: absolute;
   bottom: 0;
   z-index: 1000;
   height: 5%;
