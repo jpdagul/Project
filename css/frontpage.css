@@ -38,7 +38,7 @@ body {
 }
 
 main {
-  height: 95%;
+  height: 92%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -222,6 +222,19 @@ header nav button:hover {
 
 .img-container img:hover {
   transform: scale(1.1);
+}
+
+/* Time and Date */
+
+#datetime {
+  display: flex;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+  background-color: #ffffff38;
+  color: #d2aabd;
+  box-shadow: #0000007a 0 0 50px;
+  padding: 5px;
+  width: 100%;
 }
 
 /* ---------------About--------------- */
@@ -410,6 +423,10 @@ footer p {
 
   header {
     padding: 20px;
+  }
+
+  header:hover {
+    box-shadow: #00000090 0 0 50px;
   }
 
   header nav {
