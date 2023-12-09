@@ -115,6 +115,44 @@ nav button:hover {
   font-size: 2vh;
 }
 
+/* Calendar Interaction Guide Styles */
+.popup-guide {
+  position: absolute;
+  z-index: 1000;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 70%;
+  padding: 50px;
+  border-radius: 10px;
+  border: #000000 1px solid;
+  background-color: #0000007e;
+  color: white;
+  box-shadow: #000000 0 0 10px;
+  backdrop-filter: blur(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 0;
+}
+
+.popup-guide.show {
+  opacity: 1;
+}
+
+.popup-guide .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.popup-guide .close:hover {
+  text-shadow: white 0 0 10px;
+}
 /* Calendar styles */
 .calendar {
   text-align: center;
@@ -189,6 +227,8 @@ nav button:hover {
   padding: 2vh;
   height: 96px;
   border: 1px solid #00000041;
+  overflow: scroll;
+  cursor: crosshair;
 }
 
 .day:hover:not(.prev-month, .next-month) {
@@ -206,6 +246,26 @@ nav button:hover {
 .prev-month,
 .next-month {
   opacity: 0.3;
+}
+
+.events-container {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.event {
+  color: white;
+  background-color: #09719a;
+  border: #000000 1px solid;
+  box-shadow: #09719a 0 0 5px;
+  padding: 2px 5px;
+  margin: 5px;
+}
+
+.event:hover {
+  opacity: 50%;
+  text-decoration: line-through;
 }
 
 /* ---------------Footer--------------- */
@@ -250,5 +310,19 @@ footer p {
 
   .day {
     height: 89px;
+  }
+
+  .day:hover:not(.prev-month, .next-month) {
+    border: 1px solid #00000041;
+  }
+
+  .event {
+    color: transparent;
+    height: 5px;
+  }
+
+  .popup-guide {
+    height: 50%;
+    font-size: small;
   }
 }

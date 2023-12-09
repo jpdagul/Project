@@ -36,6 +36,73 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // Event listener for each day element
+  daysContainer.addEventListener("click", function (event) {
+    const clickedDayElement = event.target;
+    if (clickedDayElement.classList.contains("current-month")) {
+      const day = parseInt(clickedDayElement.textContent, 10);
+      const clickedDate = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        day
+      );
+      handleDayClick(clickedDayElement, clickedDate);
+    }
+  });
+
+  // Function to handle the click on a day element
+  function handleDayClick(dayElement, clickedDate) {
+    const existingEvents = loadEventsFromLocalStorage(clickedDate);
+
+    const eventText = prompt(
+      "Enter an event for " + clickedDate.toDateString() + ":"
+    );
+
+    if (eventText) {
+      existingEvents.push(eventText);
+      saveEventsToLocalStorage(clickedDate, existingEvents);
+
+      // Update the UI
+      updateCalendar();
+    }
+  }
+
+  // Function to load events from local storage for a specific date
+  function loadEventsFromLocalStorage(date) {
+    const key = formatDateForLocalStorage(date);
+    const existingEvents = JSON.parse(localStorage.getItem(key)) || [];
+    return existingEvents;
+  }
+
+  // Function to save events to local storage for a specific date
+  function saveEventsToLocalStorage(date, events) {
+    const key = formatDateForLocalStorage(date);
+    localStorage.setItem(key, JSON.stringify(events));
+  }
+
+  // Function to delete an event for a specific date
+  function deleteEvent(date, eventIndex) {
+    const existingEvents = loadEventsFromLocalStorage(date);
+
+    // Ask for confirmation
+    const confirmation = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+
+    if (confirmation) {
+      existingEvents.splice(eventIndex, 1);
+      saveEventsToLocalStorage(date, existingEvents);
+
+      // Update the UI
+      updateCalendar();
+    }
+  }
+
+  // Function to format a date for local storage key
+  function formatDateForLocalStorage(date) {
+    return date.toISOString().split("T")[0]; // Using only the date part
+  }
+
   // Function to update the calendar based on the current date
   function updateCalendar() {
     // Update the displayed month
@@ -83,6 +150,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create and append day elements for the current month
     for (let i = 1; i <= lastDay; i++) {
       const dayElement = createDayElement("current-month", i);
+      const events = loadEventsFromLocalStorage(
+        new Date(currentDate.getFullYear(), currentDate.getMonth(), i)
+      );
+      renderEventsOnDay(dayElement, events);
       daysContainer.appendChild(dayElement);
     }
 
@@ -112,9 +183,72 @@ document.addEventListener("DOMContentLoaded", function () {
     ) {
       dayElement.classList.add("today");
     }
+
+    // Add event deletion functionality
+    const eventsContainer = document.createElement("div");
+    eventsContainer.classList.add("events-container");
+    dayElement.appendChild(eventsContainer);
+
+    if (eventsContainer) {
+      eventsContainer.addEventListener("click", function (event) {
+        const clickedEvent = event.target;
+        if (clickedEvent.classList.contains("event")) {
+          const eventIndex = Array.from(eventsContainer.children).indexOf(
+            clickedEvent
+          );
+          deleteEvent(
+            new Date(currentDate.getFullYear(), currentDate.getMonth(), day),
+            eventIndex
+          );
+        }
+      });
+    }
+
     return dayElement;
+  }
+
+  // Helper function to render events on a day element
+  function renderEventsOnDay(dayElement, events) {
+    const eventsContainer = dayElement.querySelector(".events-container");
+    if (eventsContainer) {
+      // Clear previous events
+      eventsContainer.innerHTML = "";
+
+      if (events.length > 0) {
+        // Add each event to the container
+        events.forEach((eventText) => {
+          const eventDiv = document.createElement("div");
+          eventDiv.classList.add("event");
+          eventDiv.textContent = eventText;
+          eventsContainer.appendChild(eventDiv);
+        });
+      }
+    }
   }
 
   // Initial calendar update
   updateCalendar();
 });
+
+// Function to close the popup guide
+function closePopup() {
+  var popup = document.getElementById("popupGuide");
+  popup.style.opacity = "0";
+
+  // After a short delay, set display to none
+  setTimeout(function () {
+    popup.style.display = "none";
+  }, 500);
+}
+
+// Function to show the popup guide with fade-in effect
+function showPopup() {
+  var popup = document.getElementById("popupGuide");
+  popup.style.display = "flex";
+  setTimeout(function () {
+    popup.classList.add("show");
+  }, 50);
+}
+
+// Call the showPopup function when the page loads
+window.onload = showPopup;

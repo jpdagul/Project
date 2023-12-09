@@ -21,6 +21,38 @@
     </nav>
 
     <div class="container">
+      <div class="popup-guide" id="popupGuide">
+        <div class="close" onclick="closePopup()">✖</div>
+        <div class="guide-text">
+          <h4>Calendar Interaction Guide:</h4>
+
+          <h5>Navigating Dates:</h5>
+          <p>
+            - Click on the month displayed at the top to jump to a specific
+            date.
+            <br />
+            - Use the "Previous" and "Next" buttons on the header to move
+            between months.
+          </p>
+
+          <h5>Adding Events:</h5>
+          <p>
+            - Click on any day in the calendar to add an event for that date.
+            <br />
+            - A prompt will appear for you to enter the event name.
+          </p>
+
+          <h5>Removing Events:</h5>
+          <p>
+            - Click on an existing event to remove it.
+            <br />
+            - A prompt will appear to let you confirm or cancel the deletion.
+          </p>
+
+          <p>Enjoy organizing your schedule with our interactive calendar!</p>
+        </div>
+      </div>
+
       <div class="calendar">
         <header>
           <button id="prevMonthBtn">Previous</button>
@@ -41,11 +73,18 @@
           <span class="day prev-month"></span>
 
           <!-- Current Month -->
-          <span class="day"></span>
+          <span class="day">
+            <div
+              class="events-container"
+              id="currentMonthEventsContainer"
+            ></div>
+          </span>
           <span class="day today"></span>
 
           <!-- Next Month -->
           <span class="day next-month"></span>
+
+          <!-- Event Container for the current month -->
         </div>
       </div>
     </div>
