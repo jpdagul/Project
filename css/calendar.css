@@ -228,11 +228,11 @@ nav button:hover {
   height: 96px;
   border: 1px solid #00000041;
   overflow: scroll;
-  cursor: crosshair;
 }
 
 .day:hover:not(.prev-month, .next-month) {
   border: 1px solid #45373e;
+  cursor: crosshair;
 }
 
 /* Today's date styles */
@@ -248,6 +248,8 @@ nav button:hover {
   opacity: 0.3;
 }
 
+/* Event styles */
+
 .events-container {
   display: flex;
   flex-direction: column;
@@ -255,12 +257,15 @@ nav button:hover {
 }
 
 .event {
-  color: white;
-  background-color: #09719a;
+  font-size: small;
+  background-color: #45373e;
+  color: #d2aabd;
   border: #000000 1px solid;
-  box-shadow: #09719a 0 0 5px;
+  border-radius: 5px;
   padding: 2px 5px;
   margin: 5px;
+  white-space: nowrap;
+  overflow: scroll;
 }
 
 .event:hover {

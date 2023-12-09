@@ -8,6 +8,19 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize current date
   let currentDate = new Date();
 
+  // Define an array of holidays
+  const holidays = [
+    { name: "New Year's Day", month: 0, day: 1 },
+    { name: "Valentine's Day", month: 1, day: 14 },
+    { name: "Canada Day", month: 6, day: 1 },
+    { name: "Halloween", month: 9, day: 31 },
+    { name: "Remembrance Day", month: 10, day: 11 },
+    { name: "Christmas Eve", month: 11, day: 24 },
+    { name: "Christmas Day", month: 11, day: 25 },
+    { name: "Boxing Day", month: 11, day: 26 },
+    { name: "New Year's Eve", month: 11, day: 31 },
+  ];
+
   // Event listener for the previous month button
   prevMonthBtn.addEventListener("click", function () {
     currentDate.setMonth(currentDate.getMonth() - 1);
@@ -153,6 +166,35 @@ document.addEventListener("DOMContentLoaded", function () {
       const events = loadEventsFromLocalStorage(
         new Date(currentDate.getFullYear(), currentDate.getMonth(), i)
       );
+
+      // Check if the current day is a holiday
+      const isHoliday = holidays.some(
+        (holiday) =>
+          holiday.month === currentDate.getMonth() && holiday.day === i
+      );
+
+      if (isHoliday) {
+        // Check if the holiday event already exists for this day
+        const holidayEventExists = events.some((event) =>
+          event.startsWith("Holiday:")
+        );
+
+        if (!holidayEventExists) {
+          // If it's a holiday and the event doesn't exist, add the holiday event
+          events.push(
+            "Holiday: " +
+              holidays.find(
+                (holiday) =>
+                  holiday.month === currentDate.getMonth() && holiday.day === i
+              ).name
+          );
+          saveEventsToLocalStorage(
+            new Date(currentDate.getFullYear(), currentDate.getMonth(), i),
+            events
+          );
+        }
+      }
+
       renderEventsOnDay(dayElement, events);
       daysContainer.appendChild(dayElement);
     }
