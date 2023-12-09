@@ -20,27 +20,6 @@ function addTask() {
   }
 }
 
-// function addTaskToDOM(taskText) {
-//   const li = document.createElement("li");
-//   li.textContent = taskText;
-
-//   const completeBtn = document.createElement("button");
-//   completeBtn.textContent = "✓";
-//   completeBtn.addEventListener("click", completeTask);
-//   li.appendChild(completeBtn);
-
-//   const deleteBtn = document.createElement("button");
-//   deleteBtn.textContent = "🗑️";
-//   deleteBtn.addEventListener("click", deleteTask);
-//   li.appendChild(deleteBtn);
-
-//   taskList.appendChild(li);
-
-//   li.addEventListener("click", function () {
-//     li.classList.toggle("completed");
-//     updateLocalStorage();
-//   });
-// }
 function addTaskToDOM(taskText) {
   const li = document.createElement("li");
   li.textContent = taskText;
@@ -73,22 +52,10 @@ function deleteTask(event) {
   updateLocalStorage();
 }
 
-// function completeTask(event) {
-//   const listItem = event.target.parentElement;
-//   listItem.classList.toggle("completed");
-//   updateLocalStorage();
-// }
 function completeTask(event) {
   const listItem = event.target.parentElement;
   listItem.classList.toggle("completed");
   const textElement = listItem.querySelector("li");
-  if (textElement) {
-    if (textElement.style.textDecoration === "underline") {
-      textElement.style.textDecoration = "none";
-    } else {
-      textElement.style.textDecoration = "line-through";
-    }
-  }
   updateLocalStorage();
 }
 
@@ -96,3 +63,34 @@ function updateLocalStorage() {
   const tasks = Array.from(taskList.children).map((li) => li.textContent);
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+const completed = document.getElementById("taskList"); // Replace "parentElementId" with your actual parent element's ID
+console.log(completed);
+const children = completed.children;
+const numberOfChildren = children.length;
+console.log("Number of children:", numberOfChildren);
+const completedTasks = document.querySelectorAll(".completed");
+
+completedTasks.forEach((task) => {
+  // Apply styles or modifications to each completed task
+  task.style.textDecoration = "line-through";
+  // You can add more modifications here if needed
+});
+
+let countchild = () => {
+  const completed = document.getElementById("taskList");
+  console.log(completed);
+  const children = completed.children;
+  const numberOfChildren = children.length;
+  console.log("Number of children:", numberOfChildren);
+
+  // Show each child element
+  for (let i = 0; i < children.length; i++) {
+    console.log(children[i]);
+  }
+  firstListItem = document.querySelector("#taskList > li:first-child");
+  firstButton = document.querySelector("#taskList > li:first-child button");
+  firstButton.addEventListener("click", () => {
+    firstListItem.style.textDecoration = "line-through";
+  });
+};
