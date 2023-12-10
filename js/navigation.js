@@ -1,4 +1,3 @@
-// Navigation Toggle Function
 function toggleNav() {
   var navList = document.getElementById("nav-list");
 

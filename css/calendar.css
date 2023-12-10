@@ -105,17 +105,8 @@ nav button:hover {
   transform: rotate(180deg) scale(1.5);
 }
 
-/* ---------------Main--------------- */
+/* ---------------Popup Guide--------------- */
 
-/* Container styles */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2vh;
-}
-
-/* Calendar Interaction Guide Styles */
 .popup-guide {
   position: absolute;
   z-index: 1000;
@@ -141,6 +132,8 @@ nav button:hover {
   opacity: 1;
 }
 
+/* Guide Close Button Styles */
+
 .popup-guide .close {
   position: absolute;
   top: 0;
@@ -153,6 +146,17 @@ nav button:hover {
 .popup-guide .close:hover {
   text-shadow: white 0 0 10px;
 }
+
+/* ---------------Main--------------- */
+
+/* Container styles */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vh;
+}
+
 /* Calendar styles */
 .calendar {
   text-align: center;
@@ -168,7 +172,7 @@ nav button:hover {
   background-color: #4f1a36;
   color: #fff;
   padding: 2vh;
-  height: 10vh;
+  height: 15vh;
 }
 
 /* Month navigation buttons */
@@ -187,6 +191,21 @@ nav button:hover {
   background-color: #553344;
 }
 
+.currdate button {
+  color: white;
+  background-color: #ffffff31;
+  border: white 1px solid;
+  border-radius: 5px;
+  height: 25px;
+  width: 60px;
+  font-size: small;
+  cursor: pointer;
+}
+
+.currdate button:hover {
+  background-color: #ffffff7e;
+}
+
 /* Current month title */
 #currentMonth {
   font-size: 4vh;
@@ -196,7 +215,7 @@ nav button:hover {
 #currentMonth:hover {
   cursor: text;
   transform: scale(1.1);
-  border-bottom: #ffffff 3px solid;
+  border-bottom: #ffffff 1px solid;
 }
 
 /* Weekday styles */
@@ -306,6 +325,10 @@ footer p {
 
   #prevMonthBtn,
   #nextMonthBtn {
+    scale: 0.7;
+  }
+
+  .currdate button {
     scale: 0.7;
   }
 

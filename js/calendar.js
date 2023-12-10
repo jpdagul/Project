@@ -1,17 +1,19 @@
+// When the page content is loaded, set up the calendar functionality
 document.addEventListener("DOMContentLoaded", function () {
-  // Get necessary HTML elements
+  // Get references to HTML elements
   const prevMonthBtn = document.getElementById("prevMonthBtn");
   const nextMonthBtn = document.getElementById("nextMonthBtn");
   const currentMonthElement = document.getElementById("currentMonth");
   const daysContainer = document.querySelector(".days");
 
-  // Initialize current date
+  // Initialize the calendar with the current date
   let currentDate = new Date();
 
-  // Define an array of holidays
+  // Define special dates (holidays)
   const holidays = [
     { name: "New Year's Day", month: 0, day: 1 },
     { name: "Valentine's Day", month: 1, day: 14 },
+    { name: "April Fool's Day", month: 3, day: 1 },
     { name: "Canada Day", month: 6, day: 1 },
     { name: "Halloween", month: 9, day: 31 },
     { name: "Remembrance Day", month: 10, day: 11 },
@@ -21,19 +23,25 @@ document.addEventListener("DOMContentLoaded", function () {
     { name: "New Year's Eve", month: 11, day: 31 },
   ];
 
-  // Event listener for the previous month button
+  // Add event listeners for navigation buttons
   prevMonthBtn.addEventListener("click", function () {
     currentDate.setMonth(currentDate.getMonth() - 1);
     updateCalendar();
   });
 
-  // Event listener for the next month button
   nextMonthBtn.addEventListener("click", function () {
     currentDate.setMonth(currentDate.getMonth() + 1);
     updateCalendar();
   });
 
-  // Event listener for the current month element
+  // Event listener to return to the current month
+  const backToCurrentBtn = document.getElementById("backToCurrentBtn");
+  backToCurrentBtn.addEventListener("click", function () {
+    currentDate = new Date();
+    updateCalendar();
+  });
+
+  // Event listener for manually selecting a month
   currentMonthElement.addEventListener("click", function () {
     const userInput = prompt("Enter a date (YYYY-MM-DD):");
     if (userInput && userInput.length === 10) {
@@ -49,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Event listener for each day element
+  // Event listener for clicking on a day
   daysContainer.addEventListener("click", function (event) {
     const clickedDayElement = event.target;
     if (clickedDayElement.classList.contains("current-month")) {
@@ -63,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Function to handle the click on a day element
+  // Function to handle adding an event on a specific day
   function handleDayClick(dayElement, clickedDate) {
     const existingEvents = loadEventsFromLocalStorage(clickedDate);
 
@@ -74,30 +82,28 @@ document.addEventListener("DOMContentLoaded", function () {
     if (eventText) {
       existingEvents.push(eventText);
       saveEventsToLocalStorage(clickedDate, existingEvents);
-
-      // Update the UI
       updateCalendar();
     }
   }
 
-  // Function to load events from local storage for a specific date
+  // Function to load events from local storage
   function loadEventsFromLocalStorage(date) {
     const key = formatDateForLocalStorage(date);
     const existingEvents = JSON.parse(localStorage.getItem(key)) || [];
     return existingEvents;
   }
 
-  // Function to save events to local storage for a specific date
+  // Function to save events to local storage
   function saveEventsToLocalStorage(date, events) {
     const key = formatDateForLocalStorage(date);
     localStorage.setItem(key, JSON.stringify(events));
   }
 
-  // Function to delete an event for a specific date
+  // Function to delete an event
   function deleteEvent(date, eventIndex) {
     const existingEvents = loadEventsFromLocalStorage(date);
 
-    // Ask for confirmation
+    // Confirm deletion with the user
     const confirmation = window.confirm(
       "Are you sure you want to delete this event?"
     );
@@ -105,15 +111,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (confirmation) {
       existingEvents.splice(eventIndex, 1);
       saveEventsToLocalStorage(date, existingEvents);
-
-      // Update the UI
       updateCalendar();
     }
   }
 
   // Function to format a date for local storage key
   function formatDateForLocalStorage(date) {
-    return date.toISOString().split("T")[0]; // Using only the date part
+    return date.toISOString().split("T")[0]; // Use only the date part
   }
 
   // Function to update the calendar based on the current date
@@ -176,13 +180,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isHoliday) {
         // Check if the holiday event already exists for this day
         const holidayEventExists = events.some((event) =>
-          event.startsWith("Holiday:")
+          event.startsWith("Event:")
         );
 
         if (!holidayEventExists) {
           // If it's a holiday and the event doesn't exist, add the holiday event
           events.push(
-            "Holiday: " +
+            "Event: " +
               holidays.find(
                 (holiday) =>
                   holiday.month === currentDate.getMonth() && holiday.day === i

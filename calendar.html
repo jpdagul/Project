@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta and Title Section -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar</title>
+
+    <!-- Stylesheets and Favicon -->
     <link rel="stylesheet" href="css/calendar.css" />
     <link rel="icon" href="img/icon.png" />
   </head>
+
   <body>
+    <!-- Navigation Section -->
     <nav>
       <div id="nav-list">
         <a class="unique" href="todolist.html">To Do List</a>
@@ -20,6 +25,7 @@
       </div>
     </nav>
 
+    <!-- Calendar Interaction Guide Popup Section -->
     <div class="container">
       <div class="popup-guide" id="popupGuide">
         <div class="close" onclick="closePopup()">✖</div>
@@ -33,6 +39,8 @@
             <br />
             - Use the "Previous" and "Next" buttons on the header to move
             between months.
+            <br />
+            - Use the "Today" button to jump to the current date.
           </p>
 
           <h5>Adding Events:</h5>
@@ -54,7 +62,8 @@
             - Events are visible but not readable on mobile devices. Please use
             a larger screen for optimal visibility.
             <br />
-            - Some official holidays are automatically included on the calendar.
+            - Some holidays/events are included to the calendar and cannot be
+            deleted.
             <br />
             - Your manually added events are locally stored on your browser.
             Ensure your browser settings allow local storage for a seamless
@@ -65,12 +74,19 @@
         </div>
       </div>
 
+      <!-- Calendar Display Section -->
       <div class="calendar">
+        <!-- Calendar Header Section -->
         <header>
           <button id="prevMonthBtn">Previous</button>
-          <h1 id="currentMonth"></h1>
+          <div class="currdate">
+            <h1 id="currentMonth"></h1>
+            <button id="backToCurrentBtn">Today</button>
+          </div>
           <button id="nextMonthBtn">Next</button>
         </header>
+
+        <!-- Weekdays Display Section -->
         <div class="weekdays">
           <span>Sun</span>
           <span>Mon</span>
@@ -80,31 +96,35 @@
           <span>Fri</span>
           <span>Sat</span>
         </div>
+
+        <!-- Days Display Section -->
         <div class="days">
-          <!-- Previous Month -->
+          <!-- Previous Month Placeholder Day -->
           <span class="day prev-month"></span>
 
-          <!-- Current Month -->
+          <!-- Today's Date Display -->
+          <span class="day today"></span>
+
+          <!-- Events Container for Current Month -->
           <span class="day">
             <div
               class="events-container"
               id="currentMonthEventsContainer"
             ></div>
           </span>
-          <span class="day today"></span>
 
-          <!-- Next Month -->
+          <!-- Next Month Placeholder Day -->
           <span class="day next-month"></span>
-
-          <!-- Event Container for the current month -->
         </div>
       </div>
     </div>
 
+    <!-- Footer Section -->
     <footer>
       <p>&copy; 2023 Incognito Mode. All rights reserved</p>
     </footer>
 
+    <!-- JavaScript Files Section -->
     <script src="js/calendar.js"></script>
     <script src="js/navigation.js"></script>
   </body>
