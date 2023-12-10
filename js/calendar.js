@@ -79,10 +79,20 @@ document.addEventListener("DOMContentLoaded", function () {
       "Enter an event for " + clickedDate.toDateString() + ":"
     );
 
+    const maxCharacters = 25;
+
     if (eventText) {
-      existingEvents.push(eventText);
-      saveEventsToLocalStorage(clickedDate, existingEvents);
-      updateCalendar();
+      if (eventText.length > maxCharacters) {
+        alert(
+          "Event text exceeds the maximum character limit of " +
+            maxCharacters +
+            " characters."
+        );
+      } else {
+        existingEvents.push(eventText);
+        saveEventsToLocalStorage(clickedDate, existingEvents);
+        updateCalendar();
+      }
     }
   }
 
@@ -276,17 +286,6 @@ document.addEventListener("DOMContentLoaded", function () {
   updateCalendar();
 });
 
-// Function to close the popup guide
-function closePopup() {
-  var popup = document.getElementById("popupGuide");
-  popup.style.opacity = "0";
-
-  // After a short delay, set display to none
-  setTimeout(function () {
-    popup.style.display = "none";
-  }, 500);
-}
-
 // Function to show the popup guide with fade-in effect
 function showPopup() {
   var popup = document.getElementById("popupGuide");
@@ -298,3 +297,14 @@ function showPopup() {
 
 // Call the showPopup function when the page loads
 window.onload = showPopup;
+
+// Function to close the popup guide
+function closePopup() {
+  var popup = document.getElementById("popupGuide");
+  popup.style.opacity = "0";
+
+  // After a short delay, set display to none
+  setTimeout(function () {
+    popup.style.display = "none";
+  }, 500);
+}

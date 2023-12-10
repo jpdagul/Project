@@ -123,6 +123,7 @@ nav button:hover {
   background-color: #0000007e;
   color: white;
   box-shadow: #000000 0 0 10px;
+  font-size: medium;
   backdrop-filter: blur(10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
   opacity: 0;
@@ -282,7 +283,7 @@ nav button:hover {
   border: #000000 1px solid;
   border-radius: 5px;
   padding: 2px 5px;
-  margin: 5px;
+  margin: 3px;
   white-space: nowrap;
   overflow: scroll;
 }
@@ -350,7 +351,6 @@ footer p {
   }
 
   .popup-guide {
-    height: 50%;
     font-size: small;
   }
 }
