@@ -2,41 +2,94 @@
 html,
 body,
 .container {
-  height: 100%;
   margin: 0;
   padding: 0;
+}
+
+html {
+  background-color: #4f1a36;
   overflow: hidden;
 }
 
-body,
-.container {
+body {
+  height: 100vh;
   overflow: auto;
 }
 
 /* ---------------Navigation--------------- */
 
+nav {
+  position: fixed;
+  z-index: 1000;
+  top: 24%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 320px;
+  width: auto;
+  pointer-events: none;
+}
+
+/* nav button */
+
+.nav-button {
+  position: relative;
+  left: -40%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 130px;
+  padding: 15px;
+  border-radius: 0 20px 20px 0;
+  background-color: #91476c;
+  box-shadow: #45373e 0 0 10px;
+  outline: black 1px solid;
+  opacity: 50%;
+  transition: all 0.5s ease;
+  pointer-events: all;
+}
+
+.nav-button:hover {
+  left: -10%;
+  opacity: 100%;
+}
+
+nav button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+  transition: all 0.5s ease;
+}
+
+nav button:hover {
+  cursor: pointer;
+  transform: rotate(180deg) scale(1.5);
+}
+
 /* nav list */
 
 nav #nav-list {
-  position: absolute;
-  z-index: 1000;
-  bottom: 42%;
-  left: 1%;
   display: flex;
   flex-direction: column;
+  width: 130px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
   transition: all 0.5s ease;
+  pointer-events: all;
 }
 
 nav #nav-list.show {
-  transform: translateX(-10%);
+  transform: translateX(0%);
   opacity: 1;
   visibility: visible;
 }
 
 nav #nav-list.hide {
+  transform: translateX(-20%);
   opacity: 0;
   visibility: hidden;
 }
@@ -65,68 +118,44 @@ nav #nav-list .unique:hover {
   background-color: #074c68;
 }
 
-/* nav button */
-
-.nav-button {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  position: absolute;
-  z-index: 1000;
-  bottom: 70%;
-  left: -7%;
-  width: 9%;
-  height: 30px;
-  padding: 15px;
-  border-radius: 0 20px 20px 0;
-  background-color: #91476c;
-  box-shadow: #45373e 0 0 10px;
-  outline: black 1px solid;
-  opacity: 50%;
-  transition: all 0.5s ease;
-}
-
-.nav-button:hover {
-  opacity: 100%;
-  transform: translateX(35%);
-}
-
-nav button {
-  border: none;
-  background-color: transparent;
-  color: white;
-  font-size: xx-large;
-  font-weight: bolder;
-  transition: all 0.5s ease;
-}
-
-nav button:hover {
-  cursor: pointer;
-  transform: rotate(180deg) scale(1.5);
-}
-
 /* ---------------Popup Guide--------------- */
 
-.popup-guide {
-  position: absolute;
+.popup-container {
+  position: fixed;
   z-index: 1000;
-  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.popup-guide {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  height: 70%;
-  padding: 50px;
+  width: 70%;
+  height: 80%;
+  padding: 20px;
   border-radius: 10px;
   border: #000000 1px solid;
   background-color: #0000007e;
-  color: white;
   box-shadow: #000000 0 0 10px;
-  font-size: medium;
   backdrop-filter: blur(10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
   opacity: 0;
+  pointer-events: all;
+}
+
+.guide-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: medium;
+  color: white;
+  overflow: scroll;
 }
 
 .popup-guide.show {
@@ -136,16 +165,17 @@ nav button:hover {
 /* Guide Close Button Styles */
 
 .popup-guide .close {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   margin: 30px;
   font-size: 30px;
+  color: white;
   cursor: pointer;
 }
 
 .popup-guide .close:hover {
-  text-shadow: white 0 0 10px;
+  opacity: 50%;
 }
 
 /* ---------------Main--------------- */
@@ -160,9 +190,9 @@ nav button:hover {
 
 /* Calendar styles */
 .calendar {
+  background-color: white;
   text-align: center;
   width: 100vw;
-  height: 100vh;
 }
 
 /* Calendar header styles */
@@ -239,6 +269,7 @@ nav button:hover {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 3px;
+  padding: 5px 0 50px 0;
 }
 
 /* Day styles */
@@ -248,6 +279,7 @@ nav button:hover {
   height: 96px;
   border: 1px solid #00000041;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .day:hover:not(.prev-month, .next-month) {
@@ -296,9 +328,9 @@ nav button:hover {
 /* ---------------Footer--------------- */
 
 footer {
-  position: relative;
+  position: fixed;
   bottom: 0;
-  height: 5%;
+  height: 40px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -315,13 +347,13 @@ footer p {
 
 /* ---------------Mobile Responsiveness--------------- */
 @media only screen and (max-width: 768px) {
-  nav #nav-list {
-    bottom: 45%;
-    left: 3%;
+  nav {
+    scale: 0.8;
+    left: -3.5%;
   }
 
   .nav-button {
-    top: 17%;
+    left: -60%;
   }
 
   #prevMonthBtn,
@@ -338,7 +370,7 @@ footer p {
   }
 
   .day {
-    height: 89px;
+    height: 80px;
   }
 
   .day:hover:not(.prev-month, .next-month) {
@@ -348,9 +380,15 @@ footer p {
   .event {
     color: transparent;
     height: 5px;
+    overflow: hidden;
   }
 
   .popup-guide {
-    font-size: small;
+    height: 60%;
+    width: 80%;
+  }
+
+  .guide-text {
+    font-size: x-small;
   }
 }

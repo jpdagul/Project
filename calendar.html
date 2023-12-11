@@ -14,19 +14,19 @@
   <body>
     <!-- Navigation Section -->
     <nav>
+      <div class="nav-button">
+        <button onclick="toggleNav()">≡</button>
+      </div>
       <div id="nav-list">
         <a class="unique" href="todolist.html">To Do List</a>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="nav-button">
-        <button onclick="toggleNav()">≡</button>
-      </div>
     </nav>
 
     <!-- Calendar Interaction Guide Popup Section -->
-    <div class="container">
+    <div class="popup-container">
       <div class="popup-guide" id="popupGuide">
         <div class="close" onclick="closePopup()">✖</div>
         <div class="guide-text">
@@ -81,8 +81,10 @@
           <p>Enjoy organizing your schedule with our interactive calendar!</p>
         </div>
       </div>
+    </div>
 
-      <!-- Calendar Display Section -->
+    <!-- Calendar Display Section -->
+    <div class="container">
       <div class="calendar">
         <!-- Calendar Header Section -->
         <header>
