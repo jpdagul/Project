@@ -16,6 +16,10 @@ body {
   overflow: auto;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 /* ---------------Navigation--------------- */
 
 nav {
@@ -45,7 +49,7 @@ nav {
   background-color: #91476c;
   box-shadow: #45373e 0 0 10px;
   outline: black 1px solid;
-  opacity: 50%;
+  opacity: 60%;
   transition: all 0.5s ease;
   pointer-events: all;
 }
@@ -128,10 +132,14 @@ nav #nav-list .unique:hover {
   align-items: center;
   height: 100%;
   width: 100%;
-  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.1);
+  backdrop-filter: blur(2px);
+  transition: all 0.7s ease;
 }
 
 .popup-guide {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -141,12 +149,9 @@ nav #nav-list .unique:hover {
   padding: 20px;
   border-radius: 10px;
   border: #000000 1px solid;
-  background-color: #0000007e;
+  background-color: #151515c7;
   box-shadow: #000000 0 0 10px;
-  backdrop-filter: blur(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  opacity: 0;
-  pointer-events: all;
+  transition: all 0.5s ease;
 }
 
 .guide-text {
@@ -155,20 +160,20 @@ nav #nav-list .unique:hover {
   justify-content: center;
   font-size: medium;
   color: white;
-  overflow: scroll;
+  overflow: auto;
 }
 
-.popup-guide.show {
+.popup-container.show {
+  transform: scale(1);
   opacity: 1;
 }
 
 /* Guide Close Button Styles */
 
 .popup-guide .close {
-  position: fixed;
-  top: 0;
-  right: 0;
-  margin: 30px;
+  position: absolute;
+  top: 30px;
+  right: 30px;
   font-size: 30px;
   color: white;
   cursor: pointer;
@@ -276,9 +281,9 @@ nav #nav-list .unique:hover {
 .day {
   text-align: center;
   padding: 2vh;
-  height: 96px;
+  height: 110px;
   border: 1px solid #00000041;
-  overflow: scroll;
+  overflow: auto;
   overflow-x: hidden;
 }
 
@@ -317,7 +322,7 @@ nav #nav-list .unique:hover {
   padding: 2px 5px;
   margin: 3px;
   white-space: nowrap;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .event:hover {

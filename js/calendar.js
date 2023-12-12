@@ -288,10 +288,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Function to show the popup guide with fade-in effect
 function showPopup() {
-  var popup = document.getElementById("popupGuide");
-  popup.style.display = "flex";
+  var popupContainer = document.getElementById("popupContainer");
+  popupContainer.style.display = "flex";
   setTimeout(function () {
-    popup.classList.add("show");
+    popupContainer.classList.add("show");
   }, 50);
 }
 
@@ -300,11 +300,11 @@ window.onload = showPopup;
 
 // Function to close the popup guide
 function closePopup() {
-  var popup = document.getElementById("popupGuide");
-  popup.style.opacity = "0";
+  var popupContainer = document.getElementById("popupContainer");
+  popupContainer.style.opacity = "0";
 
   // After a short delay, set display to none
   setTimeout(function () {
-    popup.style.display = "none";
+    popupContainer.style.display = "none";
   }, 500);
 }
