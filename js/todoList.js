@@ -1,96 +1,112 @@
+// Get the task input field and task list from the DOM
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
 
-// Load tasks from local storage on page load
+// Initialize a counter and set a maximum number of tasks
+let counter = 0;
+const maxTasks = 15;
+
+// When the document is loaded, load tasks from local storage
 document.addEventListener("DOMContentLoaded", function () {
+  // Get tasks from local storage, or an empty array if there are none
   const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  // Add each saved task to the DOM
   savedTasks.forEach((task) => addTaskToDOM(task));
 });
 
+// Function to add a new task
 function addTask() {
+  // Get the task text from the input field and trim any whitespace
   const taskText = taskInput.value.trim();
-  if (taskText !== "") {
-    // Save task to local storage
+  // Get the current number of tasks
+  const currentTasks = taskList.children.length;
+  // If the task text is not empty and we haven't reached the maximum number of tasks
+  if (taskText !== "" && currentTasks < maxTasks) {
+    // Add the task to the DOM
+    addTaskToDOM({ text: taskText, completed: false });
+    // Get tasks from local storage, or an empty array if there are none
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    savedTasks.push(taskText);
+    // Add the new task to the array of saved tasks
+    savedTasks.push({ text: taskText, completed: false });
+    // Save the updated array of tasks to local storage
     localStorage.setItem("tasks", JSON.stringify(savedTasks));
-
-    // Add task to the DOM
-    addTaskToDOM(taskText);
   }
 }
 
-function addTaskToDOM(taskText) {
+// Function to add a task to the DOM
+function addTaskToDOM(task) {
+  // Create a new li element
   const li = document.createElement("li");
-  li.textContent = taskText;
+  // Set the text of the li element to the task text
+  li.textContent = task.text;
 
-  const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  if (savedTasks.includes(taskText)) {
-    li.classList.add("completed");
-  }
-
-  const completeBtn = document.createElement("button");
-  completeBtn.textContent = "✓";
-  completeBtn.addEventListener("click", completeTask);
-  li.appendChild(completeBtn);
-
+  // Create a new delete button
   const deleteBtn = document.createElement("button");
+  // Set the text of the delete button
   deleteBtn.textContent = "🗑️";
+  // Add an event listener to the delete button to delete the task when clicked
   deleteBtn.addEventListener("click", deleteTask);
+  // Add the delete button to the li element
   li.appendChild(deleteBtn);
 
+  // Add the li element to the task list
   taskList.appendChild(li);
 
+  // Add an event listener to the li element to toggle the completed status when clicked
   li.addEventListener("click", function () {
+    // Toggle the completed status of the task
+    task.completed = !task.completed;
+    // Toggle the "completed" class on the li element
     li.classList.toggle("completed");
+    // Update the tasks in local storage
     updateLocalStorage();
   });
 }
-function deleteTask(event) {
-  const task = event.target.parentElement;
-  taskList.removeChild(task);
-  updateLocalStorage();
-}
 
+// Function to mark a task as completed
 function completeTask(event) {
+  // Get the li element of the task
   const listItem = event.target.parentElement;
+  // Toggle the "completed" class on the li element
   listItem.classList.toggle("completed");
-  const textElement = listItem.querySelector("li");
+  // Update the tasks in local storage
   updateLocalStorage();
 }
 
+// Function to delete a task
+function deleteTask(event) {
+  // Get the li element of the task
+  const task = event.target.parentElement;
+  // Remove the li element from the task list
+  taskList.removeChild(task);
+  // Update the tasks in local storage
+  updateLocalStorage();
+}
+
+// Function to update the tasks in local storage
 function updateLocalStorage() {
+  // Get the text of each task in the task list
   const tasks = Array.from(taskList.children).map((li) => li.textContent);
+  // Save the tasks to local storage
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+window.onload = function () {
+  alert(
+    "Welcome to the To-Do List! Here's how it works:\n\n1. Enter a task in the input field.\n2. Click 'Add Task' to add it to the list.\n3. Click on a task to mark it as completed.\n4. Click the delete button next to a task to remove it from the list.\n5. Hope you enjoy the to-do list! Also don't be afraid to give some feedback!"
+  );
+};
+// Get the modal
+var modal = document.getElementById("myModal");
 
-const completed = document.getElementById("taskList"); // Replace "parentElementId" with your actual parent element's ID
-console.log(completed);
-const children = completed.children;
-const numberOfChildren = children.length;
-console.log("Number of children:", numberOfChildren);
-const completedTasks = document.querySelectorAll(".completed");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-completedTasks.forEach((task) => {
-  // Apply styles or modifications to each completed task
-  task.style.textDecoration = "line-through";
-  // You can add more modifications here if needed
-});
+// When the page loads, open the modal
+window.onload = function () {
+  modal.style.display = "block";
+};
 
-let countchild = () => {
-  const completed = document.getElementById("taskList");
-  console.log(completed);
-  const children = completed.children;
-  const numberOfChildren = children.length;
-  console.log("Number of children:", numberOfChildren);
-
-  // Show each child element
-  for (let i = 0; i < children.length; i++) {
-    console.log(children[i]);
-  }
-  firstListItem = document.querySelector("#taskList > li:first-child");
-  firstButton = document.querySelector("#taskList > li:first-child button");
-  firstButton.addEventListener("click", () => {
-    firstListItem.style.textDecoration = "line-through";
-  });
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
 };
