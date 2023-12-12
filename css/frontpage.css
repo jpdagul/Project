@@ -158,7 +158,6 @@ header nav button:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 /* Text */
@@ -186,22 +185,21 @@ header nav button:hover {
 /* Button */
 
 .btn-container {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 280px;
+  height: 70px;
 }
 
 .btn-container button {
   background-color: #91476c;
+  color: white;
   border: transparent;
   padding: 12px 30px;
-  margin: 5px;
   text-transform: uppercase;
+  cursor: pointer;
   transition: all 0.55s ease;
-}
-
-.btn-container button a {
-  font-size: 14px;
-  font-weight: 500;
-  color: white;
 }
 
 .btn-container button:hover {
@@ -453,23 +451,35 @@ footer .copyright {
     margin-bottom: 10px;
   }
 
-  main .home-container,
-  main .img-container {
+  main .home-container {
     height: auto;
     width: auto;
-    padding: 20px;
+  }
+
+  .txt-container h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
   }
 
   .txt-container h1 {
-    font-size: 40px;
-    margin-bottom: 30px;
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+
+  .txt-container p {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .btn-container {
+    width: 240px;
   }
 
   .btn-container button {
-    padding: 10px 20px;
+    font-size: 10px;
   }
 
-  .img-container img {
+  .img-container {
     display: none;
   }
 
