@@ -288,16 +288,21 @@ footer {
     font-size: 50px;
   }
 
+  .todo-container {
+    width: 350px;
+  }
+
   input {
+    width: 300px;
     margin-bottom: 10px;
   }
 
   li {
-    font-size: 15px;
+    font-size: 11px;
   }
 
   li > button {
-    width: 100px;
+    width: 60px;
     height: 40px;
   }
 
