@@ -6,7 +6,7 @@ body,
   padding: 0;
 }
 
-/* body */
+/* HTML */
 
 body {
   display: flex;
@@ -17,12 +17,40 @@ body {
   background: linear-gradient(360deg, #4f1a36 10%, #91476c 60%, #d2aabd 100%);
 }
 
+footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 3%;
+  width: 100%;
+  padding: 10px;
+  color: #d2aabd;
+  background-color: #45373e;
+  border-top: #000000 1px solid;
+}
+
+footer p {
+  font-size: 12px;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 80px;
+  color: white;
+}
+
+h2 {
+  font-size: 20px;
+  color: white;
+}
 /* navigation */
 
 nav #nav-list {
   position: absolute;
   z-index: 1000;
-  bottom: 42%;
+  bottom: 53%;
   left: 1%;
   display: flex;
   flex-direction: column;
@@ -70,22 +98,24 @@ nav #nav-list .unique:hover {
 .nav-button {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; /* Change this line */
   position: absolute;
   z-index: 1000;
-  bottom: 70%;
-  left: -5%;
+  bottom: 80%;
+  left: -6%;
   width: 9%;
-  height: 30px;
+  height: 10px;
   padding: 15px;
   border-radius: 0 20px 20px 0;
   background-color: #91476c;
   box-shadow: #45373e 0 0 10px;
   outline: black 1px solid;
+  opacity: 50%;
   transition: all 0.5s ease;
 }
 
 .nav-button:hover {
+  opacity: 100%;
   transform: translateX(35%);
 }
 
@@ -103,7 +133,6 @@ nav button:hover {
   transform: rotate(180deg) scale(1.5);
   background-color: transparent;
 }
-
 /* todo list */
 
 .todo-container {
@@ -121,18 +150,14 @@ nav button:hover {
   height: 100vh; /* 100% of viewport height */
 }
 
-h1 {
-  margin-top: 20px;
-  font-size: 80px;
-  color: white;
-}
-
 input {
   width: 200px;
   height: 40px;
   padding: 5px;
   margin-right: 5px;
   font-size: 16px;
+  color: white;
+  background-color: #91476c;
 }
 
 button {
@@ -143,11 +168,12 @@ button {
   width: 125px;
   height: 50px;
   font-size: 16px;
-  background-color: teal;
+  background-color: #91476c;
+  color: white;
 }
 
 button:hover {
-  background-color: #ddd;
+  background-color: #d2aaaa;
 }
 
 ul {
@@ -156,40 +182,111 @@ ul {
   list-style: none;
   padding: 0;
   margin-top: 20px;
-  text-align: left;
+  text-align: center;
 }
 
 li {
   font-size: 25px;
   margin: 10px;
+  color: white;
 }
 
 li > button {
   float: right;
   padding: 10px 20px;
-  margin-right: 10px;
+  margin-right: 180px;
   width: 125px;
   height: 50px;
   font-size: 16px;
-  background-color: teal;
+  background-color: #bcd2aa;
 }
 
-/* footer */
+li.completed {
+  text-decoration: line-through;
+}
 
-footer {
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 3%;
-  width: 100%;
-  padding: 10px;
-  color: #d2aabd;
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: transparent; /* Fallback color */
+}
+
+/* Modal Content */
+.modal-content {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  text-align: center;
   background-color: #45373e;
-  border-top: #000000 1px solid;
+  color: #d2aabd;
 }
 
-footer p {
-  font-size: 12px;
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* ---------------Mobile Responsiveness--------------- */
+@media only screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  header {
+    padding: 20px;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  nav #nav-list {
+    position: fixed;
+    top: 180px;
+    left: 5px;
+    padding: 10px;
+    background-color: transparent;
+    box-shadow: #4f1a36 0 0 10px;
+    border: #000000 1px solid;
+    border-radius: 5px;
+  }
+
+  nav a {
+    display: flex;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  main .centered-container,
+  main .todo-container {
+    height: auto;
+    width: auto;
+    padding: 92px;
+  }
+
+  footer p {
+    scale: 0.7;
+  }
 }
