@@ -98,22 +98,24 @@ nav #nav-list .unique:hover {
 .nav-button {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; /* Change this line */
   position: absolute;
   z-index: 1000;
   bottom: 80%;
-  left: -5%;
+  left: -6%;
   width: 9%;
-  height: 30px;
-  padding: 5px;
+  height: 10px;
+  padding: 15px;
   border-radius: 0 20px 20px 0;
   background-color: #91476c;
   box-shadow: #45373e 0 0 10px;
   outline: black 1px solid;
+  opacity: 50%;
   transition: all 0.5s ease;
 }
 
 .nav-button:hover {
+  opacity: 100%;
   transform: translateX(35%);
 }
 
@@ -131,7 +133,6 @@ nav button:hover {
   transform: rotate(180deg) scale(1.5);
   background-color: transparent;
 }
-
 /* todo list */
 
 .todo-container {
