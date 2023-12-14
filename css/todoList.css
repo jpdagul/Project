@@ -1,38 +1,24 @@
-/* reset */
+/* Reset */
 html,
-body,
-.container {
+body {
   margin: 0;
   padding: 0;
 }
 
-/* HTML */
+/* Base Styles */
+html {
+  background-color: #4f1a36;
+}
 
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   font-family: Arial, sans-serif;
   text-align: center;
   background: linear-gradient(360deg, #4f1a36 10%, #91476c 60%, #d2aabd 100%);
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 3%;
-  width: 100%;
-  padding: 10px;
-  color: #d2aabd;
-  background-color: #45373e;
-  border-top: #000000 1px solid;
-}
-
-footer p {
-  font-size: 12px;
+/* Header Styles */
+header {
+  padding-top: 50px;
 }
 
 h1 {
@@ -45,28 +31,75 @@ h2 {
   font-size: 20px;
   color: white;
 }
-/* navigation */
 
-nav #nav-list {
-  position: absolute;
+/* Navigation Styles */
+nav {
+  position: fixed;
   z-index: 1000;
-  bottom: 53%;
-  left: 1%;
+  top: 24%;
+  left: 0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 320px;
+  width: auto;
+  pointer-events: none;
+}
+
+.nav-button {
+  position: relative;
+  left: -40%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 130px;
+  padding: 15px;
+  border-radius: 0 20px 20px 0;
+  background-color: #91476c;
+  box-shadow: #45373e 0 0 10px;
+  outline: black 1px solid;
+  transition: all 0.5s ease;
+  pointer-events: all;
+}
+
+.nav-button:hover {
+  left: -10%;
+}
+
+nav button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+  transition: all 0.5s ease;
+}
+
+nav button:hover {
+  background-color: transparent;
+  cursor: pointer;
+  transform: rotate(180deg) scale(1.5);
+}
+
+nav #nav-list {
+  display: flex;
+  flex-direction: column;
+  width: 130px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
   transition: all 0.5s ease;
+  pointer-events: all;
 }
 
 nav #nav-list.show {
-  transform: translateX(-10%);
+  transform: translateX(0%);
   opacity: 1;
   visibility: visible;
 }
 
 nav #nav-list.hide {
+  transform: translateX(-20%);
   opacity: 0;
   visibility: hidden;
 }
@@ -95,51 +128,12 @@ nav #nav-list .unique:hover {
   background-color: #074c68;
 }
 
-.nav-button {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; /* Change this line */
-  position: absolute;
-  z-index: 1000;
-  bottom: 80%;
-  left: -6%;
-  width: 9%;
-  height: 10px;
-  padding: 15px;
-  border-radius: 0 20px 20px 0;
-  background-color: #91476c;
-  box-shadow: #45373e 0 0 10px;
-  outline: black 1px solid;
-  opacity: 50%;
-  transition: all 0.5s ease;
-}
-
-.nav-button:hover {
-  opacity: 100%;
-  transform: translateX(35%);
-}
-
-nav button {
-  border: none;
-  background-color: transparent;
-  color: white;
-  font-size: xx-large;
-  font-weight: bolder;
-  transition: all 0.5s ease;
-}
-
-nav button:hover {
-  cursor: pointer;
-  transform: rotate(180deg) scale(1.5);
-  background-color: transparent;
-}
-/* todo list */
-
+/* Todo List Styles */
 .todo-container {
   width: 1000px;
   margin: 0 10px auto;
   border: 1px solid black;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
 }
 
@@ -147,17 +141,18 @@ nav button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* 100% of viewport height */
+  height: 100vh;
 }
 
 input {
-  width: 200px;
+  width: 300px;
   height: 40px;
   padding: 5px;
   margin-right: 5px;
   font-size: 16px;
   color: white;
   background-color: #91476c;
+  border: black 1px solid;
 }
 
 button {
@@ -178,23 +173,31 @@ button:hover {
 
 ul {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   list-style: none;
-  padding: 0;
   margin-top: 20px;
-  text-align: center;
 }
 
 li {
-  font-size: 25px;
-  margin: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
   color: white;
+  word-break: break-all;
+  flex-wrap: wrap;
+  text-align: left;
+  margin: 10px;
+}
+
+li:hover {
+  cursor: pointer;
 }
 
 li > button {
-  float: right;
+  right: 0;
   padding: 10px 20px;
-  margin-right: 180px;
   width: 125px;
   height: 50px;
   font-size: 16px;
@@ -205,21 +208,20 @@ li.completed {
   text-decoration: line-through;
 }
 
-/* The Modal (background) */
+/* Modal Styles */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: transparent; /* Fallback color */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: transparent;
 }
 
-/* Modal Content */
 .modal-content {
   display: inline-block;
   position: absolute;
@@ -234,7 +236,6 @@ li.completed {
   color: #d2aabd;
 }
 
-/* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;
@@ -248,45 +249,54 @@ li.completed {
   text-decoration: none;
   cursor: pointer;
 }
-/* ---------------Mobile Responsiveness--------------- */
+
+/* Footer Styles */
+footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  font-size: 12px;
+  background-color: #45373e;
+  color: #d2aabd;
+}
+
+/* Mobile Responsiveness */
 @media only screen and (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-
-  header {
-    padding: 20px;
-  }
-
   nav {
-    margin-top: 10px;
+    scale: 0.8;
+    top: 4.5%;
+    left: -3.5%;
   }
 
-  nav #nav-list {
-    position: fixed;
-    top: 180px;
-    left: 5px;
-    padding: 10px;
-    background-color: transparent;
-    box-shadow: #4f1a36 0 0 10px;
-    border: #000000 1px solid;
-    border-radius: 5px;
-  }
-
-  nav a {
-    display: flex;
-    margin-left: 0;
+  .nav-button {
+    left: -40%;
     margin-bottom: 10px;
   }
 
-  main .centered-container,
-  main .todo-container {
-    height: auto;
-    width: auto;
-    padding: 92px;
+  header h1 {
+    font-size: 50px;
   }
 
-  footer p {
-    scale: 0.7;
+  input {
+    margin-bottom: 10px;
+  }
+
+  li {
+    font-size: 15px;
+  }
+
+  li > button {
+    width: 100px;
+    height: 40px;
+  }
+
+  footer,
+  .copyright p {
+    font-size: x-small;
   }
 }

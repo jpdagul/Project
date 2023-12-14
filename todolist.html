@@ -3,23 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<<<<<<< HEAD
-    <link rel="stylesheet" href="css/todoList.css" />
-=======
->>>>>>> 14728d3743f6130051aaa340b7775e89ba76a5f2
     <title>To-Do List</title>
-    <link rel="stylesheet" href="css/todoList.css" />
+    <link rel="stylesheet" href="css/todolist.css" />
     <link rel="icon" href="img/icon.png" />
   </head>
 
   <body>
-    <header>
-      <h1>To Do List</h1>
-    </header>
-    <h2>What are the plans for today?</h2>
-    <!-- The Modal -->
+    <!-- Modal Section -->
     <div id="myModal" class="modal">
-      <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Welcome to the To-Do List! Here's how it works:</h2>
@@ -37,31 +28,44 @@
         </ul>
       </div>
     </div>
+
+    <!-- Navigation Section -->
     <nav>
+      <div class="nav-button">
+        <button onclick="toggleNav()">≡</button>
+      </div>
       <div id="nav-list">
         <a class="unique" href="calendar.html">Calendar</a>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="nav-button">
-        <button onclick="toggleNav()">≡</button>
-      </div>
     </nav>
+
+    <!-- Header Section -->
+    <header>
+      <h1>To Do List</h1>
+    </header>
+
+    <!-- Main Content Section -->
     <main>
       <div class="centered-container">
         <div class="todo-container">
           <input type="text" id="taskInput" placeholder="Add a new task" />
-          <button onclick="addTask(),countchild() ">Add Task</button>
+          <button onclick="addTask(), countchild()">Add Task</button>
           <ul id="taskList"></ul>
         </div>
       </div>
     </main>
 
+    <!-- Footer Section -->
     <footer>
-      <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+      <div class="copyright">
+        <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+      </div>
     </footer>
 
+    <!-- JavaScript Scripts -->
     <script src="js/todolist.js"></script>
     <script src="js/navigation.js"></script>
   </body>
