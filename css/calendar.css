@@ -2,41 +2,98 @@
 html,
 body,
 .container {
-  height: 100%;
   margin: 0;
   padding: 0;
+}
+
+html {
+  background-color: #4f1a36;
   overflow: hidden;
 }
 
-body,
-.container {
+body {
+  height: 100vh;
   overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }
 
 /* ---------------Navigation--------------- */
 
+nav {
+  position: fixed;
+  z-index: 1000;
+  top: 24%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 320px;
+  width: auto;
+  pointer-events: none;
+}
+
+/* nav button */
+
+.nav-button {
+  position: relative;
+  left: -40%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 130px;
+  padding: 15px;
+  border-radius: 0 20px 20px 0;
+  background-color: #91476c;
+  box-shadow: #45373e 0 0 10px;
+  outline: black 1px solid;
+  opacity: 60%;
+  transition: all 0.5s ease;
+  pointer-events: all;
+}
+
+.nav-button:hover {
+  left: -10%;
+  opacity: 100%;
+}
+
+nav button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+  transition: all 0.5s ease;
+}
+
+nav button:hover {
+  cursor: pointer;
+  transform: rotate(180deg) scale(1.5);
+}
+
 /* nav list */
 
 nav #nav-list {
-  position: absolute;
-  z-index: 1000;
-  bottom: 42%;
-  left: 1%;
   display: flex;
   flex-direction: column;
+  width: 130px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
   transition: all 0.5s ease;
+  pointer-events: all;
 }
 
 nav #nav-list.show {
-  transform: translateX(-10%);
+  transform: translateX(0%);
   opacity: 1;
   visibility: visible;
 }
 
 nav #nav-list.hide {
+  transform: translateX(-20%);
   opacity: 0;
   visibility: hidden;
 }
@@ -65,44 +122,64 @@ nav #nav-list .unique:hover {
   background-color: #074c68;
 }
 
-/* nav button */
+/* ---------------Popup Guide--------------- */
 
-.nav-button {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  position: absolute;
+.popup-container {
+  position: fixed;
   z-index: 1000;
-  bottom: 70%;
-  left: -7%;
-  width: 9%;
-  height: 30px;
-  padding: 15px;
-  border-radius: 0 20px 20px 0;
-  background-color: #91476c;
-  box-shadow: #45373e 0 0 10px;
-  outline: black 1px solid;
-  opacity: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transform: scale(1.1);
+  backdrop-filter: blur(2px);
   transition: all 0.5s ease;
 }
 
-.nav-button:hover {
-  opacity: 100%;
-  transform: translateX(35%);
+.popup-guide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 80%;
+  padding: 20px;
+  border-radius: 10px;
+  border: #000000 1px solid;
+  background-color: #151515c7;
+  box-shadow: #000000 0 0 10px;
 }
 
-nav button {
-  border: none;
-  background-color: transparent;
+.guide-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: medium;
   color: white;
-  font-size: xx-large;
-  font-weight: bolder;
-  transition: all 0.5s ease;
+  overflow: auto;
 }
 
-nav button:hover {
+.popup-container.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Guide Close Button Styles */
+
+.popup-guide .close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
   cursor: pointer;
-  transform: rotate(180deg) scale(1.5);
+}
+
+.popup-guide .close:hover {
+  opacity: 50%;
 }
 
 /* ---------------Main--------------- */
@@ -117,9 +194,9 @@ nav button:hover {
 
 /* Calendar styles */
 .calendar {
+  background-color: white;
   text-align: center;
   width: 100vw;
-  height: 100vh;
 }
 
 /* Calendar header styles */
@@ -130,7 +207,7 @@ nav button:hover {
   background-color: #4f1a36;
   color: #fff;
   padding: 2vh;
-  height: 10vh;
+  height: 15vh;
 }
 
 /* Month navigation buttons */
@@ -149,6 +226,21 @@ nav button:hover {
   background-color: #553344;
 }
 
+.currdate button {
+  color: white;
+  background-color: #ffffff31;
+  border: white 1px solid;
+  border-radius: 5px;
+  height: 25px;
+  width: 60px;
+  font-size: small;
+  cursor: pointer;
+}
+
+.currdate button:hover {
+  background-color: #ffffff7e;
+}
+
 /* Current month title */
 #currentMonth {
   font-size: 4vh;
@@ -158,7 +250,7 @@ nav button:hover {
 #currentMonth:hover {
   cursor: text;
   transform: scale(1.1);
-  border-bottom: #ffffff 3px solid;
+  border-bottom: #ffffff 1px solid;
 }
 
 /* Weekday styles */
@@ -181,18 +273,22 @@ nav button:hover {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 3px;
+  padding: 5px 0 50px 0;
 }
 
 /* Day styles */
 .day {
   text-align: center;
   padding: 2vh;
-  height: 96px;
+  height: 110px;
   border: 1px solid #00000041;
+  overflow: auto;
+  overflow-x: hidden;
 }
 
 .day:hover:not(.prev-month, .next-month) {
   border: 1px solid #45373e;
+  cursor: crosshair;
 }
 
 /* Today's date styles */
@@ -208,39 +304,64 @@ nav button:hover {
   opacity: 0.3;
 }
 
+/* Event styles */
+
+.events-container {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.event {
+  font-size: small;
+  background-color: #45373e;
+  color: #d2aabd;
+  border: #000000 1px solid;
+  border-radius: 5px;
+  padding: 2px 5px;
+  margin: 3px;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.event:hover {
+  opacity: 50%;
+  text-decoration: line-through;
+}
+
 /* ---------------Footer--------------- */
 
 footer {
-  position: relative;
+  position: fixed;
   bottom: 0;
-  height: 5%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #45373e;
-  border-top: #000000 1px solid;
-  color: #d2aabd;
-}
-
-footer p {
+  height: 40px;
+  width: 100%;
   font-size: 12px;
+  background-color: #45373e;
+  color: #d2aabd;
 }
 
 /* ---------------Mobile Responsiveness--------------- */
 @media only screen and (max-width: 768px) {
-  nav #nav-list {
-    bottom: 45%;
-    left: 3%;
+  nav {
+    scale: 0.8;
+    left: -3.5%;
   }
 
   .nav-button {
-    top: 17%;
+    left: -60%;
   }
 
   #prevMonthBtn,
   #nextMonthBtn {
+    scale: 0.7;
+  }
+
+  .currdate button {
     scale: 0.7;
   }
 
@@ -249,6 +370,30 @@ footer p {
   }
 
   .day {
-    height: 89px;
+    height: 80px;
+  }
+
+  .day:hover:not(.prev-month, .next-month) {
+    border: 1px solid #00000041;
+  }
+
+  .event {
+    color: transparent;
+    height: 5px;
+    overflow: hidden;
+  }
+
+  .popup-guide {
+    height: 60%;
+    width: 80%;
+  }
+
+  .guide-text {
+    font-size: x-small;
+  }
+
+  footer,
+  .copyright p {
+    font-size: x-small;
   }
 }

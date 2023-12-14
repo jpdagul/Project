@@ -1,32 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta and Title Section -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar</title>
+
+    <!-- Stylesheets and Favicon -->
     <link rel="stylesheet" href="css/calendar.css" />
     <link rel="icon" href="img/icon.png" />
   </head>
+
   <body>
+    <!-- Navigation Section -->
     <nav>
+      <div class="nav-button">
+        <button onclick="toggleNav()">≡</button>
+      </div>
       <div id="nav-list">
         <a class="unique" href="todolist.html">To Do List</a>
         <a href="index.html">Home</a>
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="nav-button">
-        <button onclick="toggleNav()">≡</button>
-      </div>
     </nav>
 
+    <!-- Calendar Interaction Guide Popup Section -->
+    <div class="popup-container" id="popupContainer">
+      <div class="popup-guide">
+        <div class="close" onclick="closePopup()">✖</div>
+        <div class="guide-text">
+          <h4>Calendar Interaction Guide:</h4>
+
+          <h5>Navigating Dates:</h5>
+          <p>
+            - Click on the month displayed at the top to navigate to a specific
+            date.
+            <br />
+            - A prompt will appear for you to enter a date in the format
+            yyyy-mm-dd.
+            <br />
+            - Utilize the "Previous" and "Next" buttons on the header to move
+            between months.
+            <br />
+            - Use the "Today" button to quickly jump to the current date.
+          </p>
+
+          <h5>Adding Events:</h5>
+          <p>
+            - Click on any day in the calendar to add an event for that date.
+            <br />
+            - A prompt will appear for you to enter the event name with a
+            maximum of 25 characters.
+          </p>
+
+          <h5>Removing Events:</h5>
+          <p>
+            - Click on an existing event to remove it.
+            <br />
+            - A prompt will appear to let you confirm or cancel the deletion.
+          </p>
+
+          <h5>Notes:</h5>
+          <p>
+            - If there are numerous events on a single date, you can scroll to
+            view all.
+            <br />
+            - While the calendar is mobile-responsive, events on smaller screens
+            may be visible but not readable. Consider using a larger screen for
+            optimal readability.
+            <br />
+            - Certain holidays/events are included in the calendar and cannot be
+            deleted.
+            <br />
+            - Your manually added events are locally stored on your browser.
+            Ensure your browser settings allow local storage for a seamless
+            experience.
+          </p>
+
+          <p>Enjoy organizing your schedule with our interactive calendar!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar Display Section -->
     <div class="container">
       <div class="calendar">
+        <!-- Calendar Header Section -->
         <header>
           <button id="prevMonthBtn">Previous</button>
-          <h1 id="currentMonth"></h1>
+          <div class="currdate">
+            <h1 id="currentMonth"></h1>
+            <button id="backToCurrentBtn">Today</button>
+          </div>
           <button id="nextMonthBtn">Next</button>
         </header>
+
+        <!-- Weekdays Display Section -->
         <div class="weekdays">
           <span>Sun</span>
           <span>Mon</span>
@@ -36,24 +106,37 @@
           <span>Fri</span>
           <span>Sat</span>
         </div>
+
+        <!-- Days Display Section -->
         <div class="days">
-          <!-- Previous Month -->
+          <!-- Previous Month Placeholder Day -->
           <span class="day prev-month"></span>
 
-          <!-- Current Month -->
-          <span class="day"></span>
+          <!-- Today's Date Display -->
           <span class="day today"></span>
 
-          <!-- Next Month -->
+          <!-- Events Container for Current Month -->
+          <span class="day">
+            <div
+              class="events-container"
+              id="currentMonthEventsContainer"
+            ></div>
+          </span>
+
+          <!-- Next Month Placeholder Day -->
           <span class="day next-month"></span>
         </div>
       </div>
     </div>
 
+    <!-- Footer Section -->
     <footer>
-      <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+      <div class="copyright">
+        <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+      </div>
     </footer>
 
+    <!-- JavaScript Files Section -->
     <script src="js/calendar.js"></script>
     <script src="js/navigation.js"></script>
   </body>

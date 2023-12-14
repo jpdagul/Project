@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta and Title Section -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chrono</title>
+
+    <!-- Stylesheets and Favicon -->
     <link rel="stylesheet" href="css/frontpage.css" />
     <link rel="icon" href="img/icon.png" />
   </head>
+
   <body>
+    <!-- Header Section -->
     <header>
       <div class="title">
         <img src="img/icon.png" alt="icon" /><a href="index.html">Chrono</a>
       </div>
+      <!-- Navigation Section -->
       <nav>
         <div id="nav-list">
           <a href="about.html">About Us</a>
@@ -23,33 +29,40 @@
       </nav>
     </header>
 
+    <!-- Main Content Section -->
     <main>
       <div class="home-container">
+        <!-- Text Container Section -->
         <div class="txt-container">
           <h4>Incognito Mode</h4>
           <h1>Chrono</h1>
           <p>
             As the sun rises on new opportunities, our calendar and to-do list
-            awaits to script your day's masterpiece.
+            await to script your day's masterpiece.
           </p>
         </div>
+        <!-- Button Container Section -->
         <div class="btn-container">
-          <button><a href="calendar.html">Calendar</a></button>
-          <button><a href="todolist.html">To Do List</a></button>
+          <a href="calendar.html"><button>Calendar</button></a>
+          <a href="todolist.html"><button>To Do List</button></a>
         </div>
       </div>
 
+      <!-- Image Container Section -->
       <div class="img-container">
         <img src="img/calendar.png" alt="Calendar Image" />
       </div>
     </main>
 
-    <div id="datetime"></div>
-
+    <!-- Footer Section -->
     <footer>
-      <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+      <div id="datetime"></div>
+      <div class="copyright">
+        <p>&copy; 2023 Incognito Mode. All rights reserved</p>
+      </div>
     </footer>
 
+    <!-- JavaScript Files Section -->
     <script src="js/navigation.js"></script>
     <script src="js/timedate.js"></script>
   </body>
