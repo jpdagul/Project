@@ -23,11 +23,11 @@ function addTask() {
   // If the task text is not empty and we haven't reached the maximum number of tasks
   if (taskText !== "" && currentTasks < maxTasks) {
     // Add the task to the DOM
-    addTaskToDOM({ text: taskText, completed: false });
+    addTaskToDOM({ text: taskText });
     // Get tasks from local storage, or an empty array if there are none
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     // Add the new task to the array of saved tasks
-    savedTasks.push({ text: taskText, completed: false });
+    savedTasks.push({ text: taskText });
     // Save the updated array of tasks to local storage
     localStorage.setItem("tasks", JSON.stringify(savedTasks));
   }
@@ -40,6 +40,14 @@ function addTaskToDOM(task) {
   // Set the text of the li element to the task text
   li.textContent = task.text;
 
+  // Add an event listener to the li element to toggle the completed status when clicked
+  li.addEventListener("click", function () {
+    // Toggle the "completed" class on the li element
+    li.classList.toggle("completed");
+    // Update the tasks in local storage
+    updateLocalStorage();
+  });
+
   // Create a new delete button
   const deleteBtn = document.createElement("button");
   // Set the text of the delete button
@@ -51,26 +59,6 @@ function addTaskToDOM(task) {
 
   // Add the li element to the task list
   taskList.appendChild(li);
-
-  // Add an event listener to the li element to toggle the completed status when clicked
-  li.addEventListener("click", function () {
-    // Toggle the completed status of the task
-    task.completed = !task.completed;
-    // Toggle the "completed" class on the li element
-    li.classList.toggle("completed");
-    // Update the tasks in local storage
-    updateLocalStorage();
-  });
-}
-
-// Function to mark a task as completed
-function completeTask(event) {
-  // Get the li element of the task
-  const listItem = event.target.parentElement;
-  // Toggle the "completed" class on the li element
-  listItem.classList.toggle("completed");
-  // Update the tasks in local storage
-  updateLocalStorage();
 }
 
 // Function to delete a task
@@ -90,11 +78,13 @@ function updateLocalStorage() {
   // Save the tasks to local storage
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
 window.onload = function () {
   alert(
     "Welcome to the To-Do List! Here's how it works:\n\n1. Enter a task in the input field.\n2. Click 'Add Task' to add it to the list.\n3. Click on a task to mark it as completed.\n4. Click the delete button next to a task to remove it from the list.\n5. Hope you enjoy the to-do list! Also don't be afraid to give some feedback!"
   );
 };
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
